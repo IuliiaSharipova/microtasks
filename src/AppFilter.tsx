@@ -1,26 +1,37 @@
-import React /* {MouseEvent}*/, {useState} from 'react';
-import './App.css';
+import React, {useState} from 'react';
+import {FilterComponent} from './components/FilterComponent';
 
-/*import {Button} from './components/Button';*/
+export type FilterType = 'All' | 'Dollars' | 'RUBLS'
 
-function App() {
-    let [a, setA] = useState(1)
-    const onClickHandler = () => {
-        setA(++a)
-        console.log(a)
+function AppFilter() {
+    const [money, setMoney] = useState([
+        {banknotes: 'Dollars', value: 100, number: ' a1234567890'},
+        {banknotes: 'Dollars', value: 50, number: ' z1234567890'},
+        {banknotes: 'RUBLS', value: 100, number: ' w1234567890'},
+        {banknotes: 'Dollars', value: 100, number: ' e1234567890'},
+        {banknotes: 'Dollars', value: 50, number: ' c1234567890'},
+        {banknotes: 'RUBLS', value: 100, number: ' r1234567890'},
+        {banknotes: 'Dollars', value: 50, number: ' x1234567890'},
+        {banknotes: 'RUBLS', value: 50, number: ' v1234567890'},
+    ])
+    const [filter, setFilter] = useState<FilterType>('All')
+    let currentMoney = money;
+
+    if (filter === 'Dollars') {
+        currentMoney = money.filter((filteredMoney) => filteredMoney.banknotes === 'Dollars')
+    } else {
+        currentMoney = money.filter((filteredMoney) => filteredMoney.banknotes === 'RUBLS')
     }
-    const onClickHandler2 = () => {
-        setA(0)
-    }
+
+ const onClickFilterHandler = (nameButton: FilterType) => {
+        setFilter(nameButton)
+    };
+
     return (
-        <div>
-            <h1>{a}</h1>
-            <button onClick={onClickHandler}>number</button>
-            <button onClick={onClickHandler2}>0</button>
-        </div>
+        < FilterComponent currentMoney={currentMoney} money={money} onClickFilterHandler={onClickFilterHandler}/>
     );
 }
 
-export default App;
+export default AppFilter;
 
 
