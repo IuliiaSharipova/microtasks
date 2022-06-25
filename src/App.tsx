@@ -1,38 +1,22 @@
-import React /* {MouseEvent}*/ from 'react';
+import React /* {MouseEvent}*/, {useState} from 'react';
 import './App.css';
-import {Button} from './components/Button';
+
+/*import {Button} from './components/Button';*/
 
 function App() {
-    const Button1For = (subscriber: string, age: number) => {
-        console.log(`${subscriber}, ${age}`)
-    };
-    const Button2For = (subscriber: string) => {
-        console.log(subscriber)
+    let [a, setA] = useState(1)
+    const onClickHandler = () => {
+        setA(++a)
+        console.log(a)
     }
-    const Button3For = () => {
-        console.log('I am stupid button')
-    };
-    /*const onClickHandler = (name: string) => {
-        console.log(name)
-         }*/
-    /*const for1=()=>{
-        console.log(100200)
+    const onClickHandler2 = () => {
+        setA(0)
     }
-    const for2=(n:number)=>{
-        console.log(n)
-    }*/
-
     return (
         <div>
-            {/*          <button onClick={(event: MouseEvent<HTMLButtonElement>) => onClickHandler('Vasya')}>MyYouTubeChanel-1
-            </button>
-            <button onClick={(event: MouseEvent<HTMLButtonElement>) => onClickHandler('Ilia')}>MyYouTubeChanel-2
-            </button>*/}
-            {/*  <button onClick={for1}>1</button>
-            <button onClick={()=>(for2(100200))}>2</button>*/}
-            <Button name={'MyYouTubeChanel-1'} callBack={() => Button1For('I am Vasya', 21)}/>
-            <Button name={'MyYouTubeChanel-2'} callBack={() => Button2For('I am Ilia')}/>
-            <Button name={'Delete'} callBack={Button3For}/>
+            <h1>{a}</h1>
+            <button onClick={onClickHandler}>number</button>
+            <button onClick={onClickHandler2}>0</button>
         </div>
     );
 }
