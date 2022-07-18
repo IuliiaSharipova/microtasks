@@ -4,13 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AppFilter from './AppFilter';
+import AppInput from './AppInput';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <AppFilter/>
+    <AppInput/>
   </React.StrictMode>
 );
 
